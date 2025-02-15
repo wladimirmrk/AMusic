@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/chartFragment">
+
+    <fragment
+        android:id="@+id/chartFragment"
+        android:name="com.example.amusic.presentation.chart.ChartFragment"
+        android:label="ChartFragment" />
+    <fragment
+        android:id="@+id/downloadsFragment"
+        android:name="com.example.amusic.presentation.downloads.DownloadsFragment"
+        android:label="DownloadsFragment" />
+</navigation>
