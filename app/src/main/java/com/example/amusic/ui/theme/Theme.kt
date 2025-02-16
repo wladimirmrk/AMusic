@@ -1,36 +1,28 @@
 package com.example.amusic.ui.theme
 
-import android.app.Activity
-import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.darkColorScheme
-import androidx.compose.material3.dynamicDarkColorScheme
-import androidx.compose.material3.dynamicLightColorScheme
-import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.platform.LocalContext
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.ReadOnlyComposable
+import androidx.compose.ui.graphics.Color
 
-private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
+private val colorScheme = AMusicColorScheme(
+    primary = AMusicColors.Blue,
+    secondary = AMusicColors.Green,
+    background = AMusicColors.Black,
+    onBackground = Color.White,
+    surfaceVariant = AMusicColors.DarkGray,
+    onSurfaceVariantDisabled = AMusicColors.Black,
 )
 
-private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
-
-    /* Other default colors to override
-    background = Color(0xFFFFFBFE),
-    surface = Color(0xFFFFFBFE),
-    onPrimary = Color.White,
-    onSecondary = Color.White,
-    onTertiary = Color.White,
-    onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F),
-    */
+private val typography = AMusicTypography(
+    headline = AMusicTextStyles.headline,
+    title1 = AMusicTextStyles.title1,
+    title2 = AMusicTextStyles.title2,
+    body1 = AMusicTextStyles.body1,
+    body2 = AMusicTextStyles.body2,
+    body2Medium = AMusicTextStyles.body2Medium,
+    caption = AMusicTextStyles.caption,
 )
 
 @Composable
@@ -40,19 +32,21 @@ fun AMusicTheme(
     dynamicColor: Boolean = true,
     content: @Composable () -> Unit
 ) {
-    val colorScheme = when {
-        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
-            val context = LocalContext.current
-            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
-        }
-
-        darkTheme -> DarkColorScheme
-        else -> LightColorScheme
-    }
-
-    MaterialTheme(
-        colorScheme = colorScheme,
-        typography = Typography,
+    CompositionLocalProvider(
+        LocalAMusicColorScheme provides colorScheme,
+        LocalAMusicTypography provides typography,
         content = content
     )
+}
+
+object AMusicTheme {
+    val colorScheme: AMusicColorScheme
+        @Composable
+        @ReadOnlyComposable
+        get() = LocalAMusicColorScheme.current
+
+    val typography: AMusicTypography
+        @Composable
+        @ReadOnlyComposable
+        get() = LocalAMusicTypography.current
 }
