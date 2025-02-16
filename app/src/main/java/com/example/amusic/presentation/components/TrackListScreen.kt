@@ -13,7 +13,7 @@ import com.example.amusic.presentation.model.TrackUi
 import com.example.amusic.ui.theme.AMusicTheme
 
 val trackUis = Array(50) {
-    TrackUi(id = it)
+    TrackUi(id = it.toLong())
 }.toList()
 
 @Composable
@@ -22,7 +22,7 @@ fun TrackListScreen(
     query: String,
     onQueryChanged: (query: String) -> Unit,
     trackUiList: List<TrackUi>,
-    onClickDownload: (trackId: Int) -> Unit,
+    onClickDownload: (trackId: Long) -> Unit,
     onClickTrack: () -> Unit,
     modifier: Modifier = Modifier,
 ) {

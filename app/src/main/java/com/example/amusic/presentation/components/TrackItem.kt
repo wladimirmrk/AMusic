@@ -36,7 +36,7 @@ import com.example.amusic.ui.theme.AMusicTheme
 fun TrackItem(
     modifier: Modifier = Modifier,
     trackUi: TrackUi = TrackUi(),
-    onClickDownload: (trackId: Int) -> Unit = {}
+    onClickDownload: (trackId: Long) -> Unit = {}
 ) {
 
     Row(
