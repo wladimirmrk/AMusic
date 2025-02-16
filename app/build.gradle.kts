@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    kotlin("kapt")
 }
 
 android {
@@ -61,4 +62,8 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.bundles.navigation)
     implementation(libs.glide.compose)
+    implementation(libs.retrofit)
+    implementation(libs.gson)
+    implementation(libs.dagger)
+    kapt(libs.dagger.compiler)
 }
