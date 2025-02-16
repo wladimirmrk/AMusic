@@ -5,4 +5,6 @@ import com.example.amusic.data.repository.model.Track
 interface TrackRepository {
 
     suspend fun getChart(): List<Track>
+
+    suspend fun search(query: String): List<Track>
 }

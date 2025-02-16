@@ -48,7 +48,7 @@ fun TrackListScreen(
         }
         itemsIndexed(trackUiList, key = { _, item: TrackUi -> item.id }) { index, item ->
             val top = if (index == 0) 20.dp else 8.dp
-            val bottom = if (index == trackUis.lastIndex) 20.dp else 8.dp
+            val bottom = if (index == trackUiList.lastIndex) 20.dp else 8.dp
             TrackItem(
                 Modifier
                     .fillMaxWidth()
