@@ -9,6 +9,7 @@ import androidx.compose.ui.graphics.Color
 private val colorScheme = AMusicColorScheme(
     primary = AMusicColors.Blue,
     secondary = AMusicColors.Green,
+    secondaryVariant = AMusicColors.Gray,
     background = AMusicColors.Black,
     onBackground = Color.White,
     surfaceVariant = AMusicColors.DarkGray,

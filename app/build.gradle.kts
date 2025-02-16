@@ -60,4 +60,5 @@ dependencies {
 
     implementation(libs.androidx.appcompat)
     implementation(libs.bundles.navigation)
+    implementation(libs.glide.compose)
 }

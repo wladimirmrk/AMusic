@@ -7,6 +7,7 @@ import androidx.compose.ui.text.TextStyle
 data class AMusicColorScheme(
     val primary: Color,
     val secondary: Color,
+    val secondaryVariant: Color,
     val background: Color,
     val onBackground: Color,
     val surfaceVariant: Color,
@@ -27,6 +28,7 @@ val LocalAMusicColorScheme = staticCompositionLocalOf {
     AMusicColorScheme(
         primary = Color.Unspecified,
         secondary = Color.Unspecified,
+        secondaryVariant = Color.Unspecified,
         background = Color.Unspecified,
         onBackground = Color.Unspecified,
         surfaceVariant = Color.Unspecified,

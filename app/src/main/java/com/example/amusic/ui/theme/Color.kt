@@ -7,4 +7,5 @@ object AMusicColors {
     val Green = Color(0xFF01EB54)
     val Black = Color(0xFF111111)
     val DarkGray = Color(0xFF414141)
+    val Gray = Color(0xFF5F6368)
 }
