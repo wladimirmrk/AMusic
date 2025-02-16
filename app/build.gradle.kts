@@ -66,4 +66,5 @@ dependencies {
     implementation(libs.gson)
     implementation(libs.dagger)
     kapt(libs.dagger.compiler)
+    implementation(libs.androidx.lifecycle.runtime.compose)
 }

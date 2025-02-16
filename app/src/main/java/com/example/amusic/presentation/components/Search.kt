@@ -10,10 +10,6 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
@@ -27,16 +23,14 @@ import com.example.amusic.ui.theme.AMusicTheme
 @Composable
 fun Search(
     modifier: Modifier = Modifier,
+    query: String = "",
     onQueryChanged: (query: String) -> Unit = {}
 ) {
     val textStyle = AMusicTheme.typography.body2Medium
-    var text by remember { mutableStateOf("") }
-
     TextField(
-        value = text,
+        value = query,
         onValueChange = {
             onQueryChanged(it)
-            text = it
         },
         leadingIcon = {
             Icon(

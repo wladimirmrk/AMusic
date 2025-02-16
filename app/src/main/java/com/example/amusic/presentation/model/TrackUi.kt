@@ -1,6 +1,6 @@
 package com.example.amusic.presentation.model
 
-data class Track(
+data class TrackUi(
     val id: Int = -1,
     val title: String = "Title",
     val author: String = "Author",

@@ -7,6 +7,6 @@ import javax.inject.Inject
 class ChartViewModelFactory @Inject constructor() : ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return super.create(modelClass)
+        return ChartViewModel() as T
     }
 }

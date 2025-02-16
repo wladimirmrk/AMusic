@@ -28,14 +28,14 @@ import androidx.compose.ui.unit.dp
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
 import com.example.amusic.R
-import com.example.amusic.presentation.model.Track
+import com.example.amusic.presentation.model.TrackUi
 import com.example.amusic.ui.theme.AMusicTheme
 
 @OptIn(ExperimentalGlideComposeApi::class)
 @Composable
 fun TrackItem(
     modifier: Modifier = Modifier,
-    track: Track = Track(),
+    trackUi: TrackUi = TrackUi(),
     onClickDownload: (trackId: Int) -> Unit = {}
 ) {
 
@@ -45,7 +45,7 @@ fun TrackItem(
         verticalAlignment = Alignment.CenterVertically
     ) {
         GlideImage(
-            model = track.imageUrl,
+            model = trackUi.imageUrl,
             contentDescription = null,
             contentScale = ContentScale.FillBounds,
             modifier = Modifier
@@ -55,18 +55,18 @@ fun TrackItem(
         Column(
             modifier = Modifier.weight(1f)
         ) {
-            Text(text = track.title, style = AMusicTheme.typography.title2, color = Color.White)
+            Text(text = trackUi.title, style = AMusicTheme.typography.title2, color = Color.White)
             Spacer(modifier = Modifier.size(4.dp))
-            Text(text = track.author, style = AMusicTheme.typography.body2, color = Color.White)
+            Text(text = trackUi.author, style = AMusicTheme.typography.body2, color = Color.White)
         }
         Icon(
             painter = painterResource(R.drawable.ic_downloads),
             contentDescription = null,
-            tint = if (track.isDownloaded) AMusicTheme.colorScheme.secondary else AMusicTheme.colorScheme.secondaryVariant,
+            tint = if (trackUi.isDownloaded) AMusicTheme.colorScheme.secondary else AMusicTheme.colorScheme.secondaryVariant,
             modifier = Modifier.clickable(
                 indication = null,
                 interactionSource = remember { MutableInteractionSource() },
-                onClick = { onClickDownload(track.id) }
+                onClick = { onClickDownload(trackUi.id) }
             )
         )
     }
@@ -76,9 +76,9 @@ fun TrackItem(
 @Composable
 private fun TrackItemPreview() {
     AMusicTheme {
-        var track by remember { mutableStateOf(Track()) }
-        TrackItem(modifier = Modifier.fillMaxWidth(), track, onClickDownload = {
-            track = track.copy(isDownloaded = !track.isDownloaded)
+        var trackUi by remember { mutableStateOf(TrackUi()) }
+        TrackItem(modifier = Modifier.fillMaxWidth(), trackUi, onClickDownload = {
+            trackUi = trackUi.copy(isDownloaded = !trackUi.isDownloaded)
         })
     }
 }
