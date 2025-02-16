@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AMusic"/>
+
+    <style name="AMusic.Text"/>
+
+    <style name="AMusic.Text.Body">
+        <item name="fontFamily">@font/satoshi_regular</item>
+    </style>
+</resources>

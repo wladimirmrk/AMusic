@@ -23,5 +23,7 @@
         android:background="@color/dark_gray"
         app:itemBackground="@android:color/transparent"
         app:itemIconTint="@color/bottom_nav_item_color"
+        app:itemTextAppearanceActive="@style/AMusic.Text.Body"
+        app:itemTextAppearanceInactive="@style/AMusic.Text.Body"
         app:menu="@menu/main_bottom_menu" />
 </LinearLayout>
