@@ -12,7 +12,7 @@ class TrackRepositoryImpl @Inject constructor(
         return trackApi.getChartTracks().tracks.items.map { trackApiModel ->
             Track(
                 id = trackApiModel.id,
-                imageUrl = trackApiModel.previewUrl,
+                imageUrl = trackApiModel.album.cover,
                 title = trackApiModel.title,
                 author = trackApiModel.artist.name,
                 audioUrl = trackApiModel.previewUrl
