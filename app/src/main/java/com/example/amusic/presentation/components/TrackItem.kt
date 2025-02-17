@@ -20,6 +20,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -36,11 +37,18 @@ import com.example.amusic.ui.theme.AMusicTheme
 fun TrackItem(
     modifier: Modifier = Modifier,
     trackUi: TrackUi = TrackUi(),
+    onItemClick: (trackId: Long) -> Unit = {},
     onClickDownload: (trackId: Long) -> Unit = {}
 ) {
 
     Row(
-        modifier = modifier.padding(end = 16.dp),
+        modifier = modifier
+            .clickable(
+                indication = null,
+                interactionSource = remember { MutableInteractionSource() },
+                onClick = { onItemClick(trackUi.id) }
+            )
+            .padding(end = 16.dp),
         horizontalArrangement = Arrangement.spacedBy(16.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
@@ -51,6 +59,7 @@ fun TrackItem(
             modifier = Modifier
                 .size(48.dp)
                 .background(AMusicTheme.colorScheme.surfaceVariant, RoundedCornerShape(10.dp))
+                .clip(RoundedCornerShape(10.dp))
         )
         Column(
             modifier = Modifier.weight(1f)

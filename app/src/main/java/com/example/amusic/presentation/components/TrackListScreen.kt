@@ -12,10 +12,6 @@ import androidx.compose.ui.unit.dp
 import com.example.amusic.presentation.model.TrackUi
 import com.example.amusic.ui.theme.AMusicTheme
 
-val trackUis = Array(50) {
-    TrackUi(id = it.toLong())
-}.toList()
-
 @Composable
 fun TrackListScreen(
     title: String,
@@ -23,7 +19,7 @@ fun TrackListScreen(
     onQueryChanged: (query: String) -> Unit,
     trackUiList: List<TrackUi>,
     onClickDownload: (trackId: Long) -> Unit,
-    onClickTrack: () -> Unit,
+    onClickTrack: (trackId: Long) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     LazyColumn(
@@ -54,6 +50,7 @@ fun TrackListScreen(
                     .fillMaxWidth()
                     .padding(start = 20.dp, top = top, end = 20.dp, bottom = bottom),
                 trackUi = item,
+                onItemClick = onClickTrack,
                 onClickDownload = onClickDownload
             )
         }

@@ -7,9 +7,21 @@
     <fragment
         android:id="@+id/chartFragment"
         android:name="com.example.amusic.presentation.chart.ChartFragment"
-        android:label="ChartFragment" />
+        android:label="ChartFragment" >
+        <action
+            android:id="@+id/action_chartFragment_to_playbackFragment"
+            app:destination="@id/playbackFragment" />
+    </fragment>
     <fragment
         android:id="@+id/downloadsFragment"
         android:name="com.example.amusic.presentation.downloads.DownloadsFragment"
         android:label="DownloadsFragment" />
+    <fragment
+        android:id="@+id/playbackFragment"
+        android:name="com.example.amusic.presentation.playback.PlaybackFragment"
+        android:label="PlaybackFragment" >
+        <argument
+            android:name="trackId"
+            app:argType="long" />
+    </fragment>
 </navigation>

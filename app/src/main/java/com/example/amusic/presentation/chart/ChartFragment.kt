@@ -10,6 +10,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.navigation.fragment.findNavController
 import com.example.amusic.R
 import com.example.amusic.core.util.appComponent
 import com.example.amusic.presentation.chart.viewmodel.ChartViewModel
@@ -44,9 +45,14 @@ class ChartFragment : Fragment() {
                     onQueryChanged = viewModel::search,
                     trackUiList = viewModel.trackListUi.collectAsStateWithLifecycle().value,
                     onClickDownload = {},
-                    onClickTrack = {}
+                    onClickTrack = ::navigateToPlaybackFragment
                 )
             }
         }
+    }
+
+    private fun navigateToPlaybackFragment(trackId: Long) {
+        val action = ChartFragmentDirections.actionChartFragmentToPlaybackFragment(trackId)
+        findNavController().navigate(action)
     }
 }
